@@ -1,0 +1,24 @@
+---
+language: node_js
+node_js:
+- '5'
+
+branches:
+  only:
+    - master
+
+env:
+  - CXX=g++-4.8
+
+services: mongodb
+
+addons:
+  apt:
+    sources:
+      - mongodb-3.0-precise
+      - ubuntu-toolchain-r-test
+    packages:
+      - mongodb-org-server
+      - g++-4.8
+
+script: npm test && ./run_integration.sh

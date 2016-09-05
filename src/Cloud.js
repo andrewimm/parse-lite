@@ -19,11 +19,13 @@ export default function Cloud(app: App, name: string, data: any = {}): Promise<a
     'functions/' + name,
     payload,
     {}
-  ).then((res) => {
-    const decoded: CloudResponse = (decode(res): any);
+  ).then(({response}) => {
+    const decoded: CloudResponse = (decode(response): any);
     if (decoded && decoded.hasOwnProperty('result')) {
       return Promise.resolve(decoded.result);
     }
     return Promise.reject('The server returned an invalid response.');
+  }).catch(({response}) => {
+    return Promise.reject(response);
   });
 }

@@ -4,6 +4,10 @@
   "description": "The universal JS library for Parse Server",
   "homepage": "https://github.com/andrewimm/parse-lite",
   "license": "BSD-3-Clause",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andrewimm/parse-lite"
+  },
   "dependencies": {
     "ibeam": "^0.1.1"
   },

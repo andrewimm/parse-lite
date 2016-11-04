@@ -1,4 +1,6 @@
 # Parse Lite - The universal JS library for Parse Server
+[![Build Status][build-status-svg]][build-status-link]
+[![License][license-svg]][license-link]
 
 Parse Lite is a lightweight SDK for
 [Parse Server](https://github.com/ParsePlatform/Parse-Server). It handles all of
@@ -419,3 +421,8 @@ Destroy(app, 'Item', obj).then((result) => {
   console.log('An error occurred:', err);
 });
 ```
+
+[build-status-svg]: https://travis-ci.org/andrewimm/parse-lite.svg?branch=master
+[build-status-link]: https://travis-ci.org/andrewimm/parse-lite
+[license-svg]: https://img.shields.io/badge/license-BSD-lightgrey.svg
+[license-link]: https://github.com/andrewimm/parse-lite/blob/master/LICENSE

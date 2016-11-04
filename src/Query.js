@@ -302,7 +302,7 @@ export function find(
   const filtered: Object = {
     where: q.where,
   };
-  if (q.order.length) {
+  if (q.order && q.order.length) {
     filtered.order = q.order.join(',');
   }
   if (q.limit > -1) {

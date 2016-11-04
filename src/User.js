@@ -24,6 +24,8 @@ type AuthResponse = {
   user: ParseObject,
 };
 
+export const CLASS_NAME = '_User';
+
 export function signUp(app: App, options: SignUpOptions): Promise<AuthResponse> {
   const user: ParseObject = {
     username: options.username,

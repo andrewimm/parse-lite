@@ -50,12 +50,8 @@ export default class App {
         json[key] = payload[key];
       }
     }
-    if (options.useMasterKey) {
-      if (this._MasterKey) {
-        json._MasterKey = this._MasterKey;
-      } else {
-        throw new Error('Cannot use the master key. It has not been provided.');
-      }
+    if (this._MasterKey) {
+      json._MasterKey = this._MasterKey;
     }
     if (options.sessionToken) {
       json._SessionToken = options.sessionToken;

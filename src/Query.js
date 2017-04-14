@@ -29,7 +29,7 @@ type QueryJSON = {
 };
 
 const CONSTRAINTS = {
-  $neq: true,
+  $ne: true,
   $lt: true,
   $lte: true,
   $gt: true,
@@ -113,7 +113,7 @@ export function equalTo(q: QueryJSON, field: string, value: any): QueryJSON {
 }
 
 export function notEqualTo(q: QueryJSON, field: string, value: any): QueryJSON {
-  return copyWithNewConstraint(q, field, '$neq', value);
+  return copyWithNewConstraint(q, field, '$ne', value);
 }
 
 export function lessThan(q: QueryJSON, field: string, value: Comparable): QueryJSON {

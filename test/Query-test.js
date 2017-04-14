@@ -159,4 +159,14 @@ suite('Query', () => {
     expect(eq.limit).to.equal(10);
     expect(eq.where).to.deep.equal({prop: {$exists: true}});
   });
+
+  test('include', () => {
+    let q = Query.emptyQuery();
+    let eq = Query.exists(q, 'prop');
+    eq = Query.include(eq, 'field');
+    expect(q).to.not.equal(eq);
+    expect(q.include).to.deep.equal([]);
+    expect(eq.include).to.deep.equal(['field']);
+    expect(eq.where).to.deep.equal({prop: {$exists: true}});
+  });
 });

@@ -27,12 +27,12 @@ suite('Query', () => {
     let eq = Query.notEqualTo(q, 'foo', 'bar');
     expect(q).to.not.equal(eq);
     expect(q.where).to.deep.equal({});
-    expect(eq.where).to.deep.equal({foo: {$neq: 'bar'}});
+    expect(eq.where).to.deep.equal({foo: {$ne: 'bar'}});
 
     eq = Query.equalTo(eq, 'foo', 'bar');
     expect(eq.where).to.deep.equal({foo: 'bar'});
     eq = Query.notEqualTo(eq, 'foo', 'baz');
-    expect(eq.where).to.deep.equal({foo: {$neq: 'baz'}});
+    expect(eq.where).to.deep.equal({foo: {$ne: 'baz'}});
   });
 
   test('less than', () => {
@@ -45,7 +45,7 @@ suite('Query', () => {
 
     eq = Query.notEqualTo(eq, 'count', 3);
     eq = Query.lessThan(eq, 'count', 5);
-    expect(eq.where).to.deep.equal({count: {$neq: 3, $lt: 5}});
+    expect(eq.where).to.deep.equal({count: {$ne: 3, $lt: 5}});
   });
 
   test('greater than', () => {
@@ -157,6 +157,16 @@ suite('Query', () => {
     expect(q).to.not.equal(eq);
     expect(q.limit).to.equal(-1);
     expect(eq.limit).to.equal(10);
+    expect(eq.where).to.deep.equal({prop: {$exists: true}});
+  });
+
+  test('include', () => {
+    let q = Query.emptyQuery();
+    let eq = Query.exists(q, 'prop');
+    eq = Query.include(eq, 'field');
+    expect(q).to.not.equal(eq);
+    expect(q.include).to.deep.equal([]);
+    expect(eq.include).to.deep.equal(['field']);
     expect(eq.where).to.deep.equal({prop: {$exists: true}});
   });
 });

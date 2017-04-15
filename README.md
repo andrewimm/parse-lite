@@ -248,14 +248,14 @@ objects and refine them. Just like an object mutation, each new query mutation
 generates a new query object, so that you can build off of queries in a
 non-destructive manner.
 
-`Query.Find` takes an `App`, a class name, and a query representation object.
+`Query.find` takes an `App`, a class name, and a query representation object.
 It returns a `Promise` that is resolved with an array of objects matching the
 query constraints. If an error occurs, the `Promise` will be rejected with the
 error.
 
 ```js
 // fetch the first 10 objects from the Item class
-Query.Find(app, 'Item', {limit: 10}).then((objects) => {
+Query.find(app, 'Item', {limit: 10}).then((objects) => {
   // objects is an array of Item results
 }, (err) => {
   console.log('An error occurred:', err);
@@ -270,7 +270,7 @@ JS Object.
 
 ```js
 let q = {}; // No constraints
-Query.Find(app, 'Item', q);
+Query.find(app, 'Item', q);
 ```
 
 You can also use a query object that has been initialized to the default values.

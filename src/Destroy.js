@@ -3,11 +3,13 @@
 import type App from './App';
 
 import type {Identifier} from './Types';
+import type {AuthOptions} from './Types';
 
 export default function Destroy(
   app: App,
   className: string,
-  object: Identifier
+  object: Identifier,
+  options: AuthOptions = {}
 ): Promise<any> {
   if (!object || (typeof object !== 'object' && typeof object !== 'string')) {
     return Promise.reject(new Error('Cannot destroy an invalid object'));
@@ -20,7 +22,7 @@ export default function Destroy(
   return app.client.delete(
     `classes/${className}/${id}`,
     null,
-    {}
+    options
   ).then(({response}) => {
     return response;
   });
